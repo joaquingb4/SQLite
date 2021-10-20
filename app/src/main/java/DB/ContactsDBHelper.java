@@ -4,13 +4,15 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.Contacts;
 import android.util.Log;
-import com.example.sqlite.Model.Contact;
 //import com.example.sqlite.DB.ContactsContract.*;
 
 
 
 import androidx.annotation.Nullable;
+
+import Model.Contact;
 
 public class ContactsDBHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
