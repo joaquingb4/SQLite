@@ -14,8 +14,8 @@ import Model.Contact;
 public class MainActivity extends AppCompatActivity {
     private ContactsDBHelper dbHelper;
     private SQLiteDatabase db;
-    private Button enterBtn = (Button) findViewById(R.id.enterBtn);
-    private EditText nombreEdt = (EditText) findViewById(R.id.nombreEdt);
+
+
 
 
 
@@ -23,22 +23,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button enterBtn = findViewById(R.id.enterBtn);
+        EditText nombreEdt = findViewById(R.id.nombreEdt);
+            enterBtn.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v) {
+                    Contact contact = new Contact(nombreEdt.getText().toString());
+                    dbHelper.insertContact(db,contact);
+
+                }
+            });
+
         dbHelper = new ContactsDBHelper(getApplicationContext());
         db = dbHelper.getWritableDatabase();
-       /* enterBtn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                Contact contact = new Contact(nombreEdt.getText().toString());
-                dbHelper.insertContact(db,contact);
-
-            }
-        });
-        */
-
-
-
     }
-    //Close the db when the activity onDestroy
 
+    //Close the db when the activity onDestroy
     @Override
     protected void onDestroy() {
         dbHelper.close();

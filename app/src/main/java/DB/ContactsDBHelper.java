@@ -35,6 +35,7 @@ public class ContactsDBHelper extends SQLiteOpenHelper {
             values.put(ContactsContract.ContactsEntry.COLUMN_NAME_TITLE, c.getNom());
 
             db.insert(ContactsContract.ContactsEntry.TABLE_NAME, null, values);
+
         }else{
             Log.i("sql","Database is closed");
         }
